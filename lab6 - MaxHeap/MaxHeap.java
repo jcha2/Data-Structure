@@ -4,8 +4,7 @@ public class MaxHeap {
 	public int[] elements;
 	public int size;
 	public int capacity;
-
-	public MaxHeap CreateHeap(int capacity) { // »õ·Î¿î capacityÀÇ Èü »ı¼º
+	public MaxHeap CreateHeap(int capacity) { // ìƒˆë¡œìš´ capacityì˜ í™ ìƒì„±
 		MaxHeap mh = new MaxHeap();
 		mh.capacity = capacity;
 		mh.size = 0;
@@ -14,11 +13,11 @@ public class MaxHeap {
 	}
 
 	public void MakeHeap(MaxHeap mh, int index) {
-		if (index / 2 > 0) { // ºÎ¸ğ°¡ 0º¸´Ù Å©´Ù = ºÎ¸ğ°¡ ÀÖÀ» °æ¿ì
-			if (mh.elements[index / 2] < mh.elements[index]) { // ¸¸¾à ºÎ¸ğ°¡ ÀÚ½Äº¸´Ù ÀÛÀº °ªÀÏ °æ¿ì¿¡ ½º¿Ò
+		if (index / 2 > 0) { // ë¶€ëª¨ê°€ 0ë³´ë‹¤ í¬ë‹¤ = ë¶€ëª¨ê°€ ìˆì„ ê²½ìš°
+			if (mh.elements[index / 2] < mh.elements[index]) { // ë§Œì•½ ë¶€ëª¨ê°€ ìì‹ë³´ë‹¤ ì‘ì€ ê°’ì¼ ê²½ìš°ì— ìŠ¤ì™‘
 				swap(mh, index / 2, index);
 			}
-			MakeHeap(mh, index / 2); // ¹Ù²ï È¤Àº ±×´ë·ÎÀÎ ºÎ¸ğ °ª¿¡ ´ëÇÏ¿© Àç±Í. ±×´ë·ÎÀÎ ºÎ¸ğ °ªÀÏ °æ¿ì ¹Ù·Î ´ÙÀ½ Àç±Í¿¡¼­ Áß´ÜµÊ (ÀÌ¹Ì Á¤·ÄµÈ Èü)
+			MakeHeap(mh, index / 2); // ë°”ë€ í˜¹ì€ ê·¸ëŒ€ë¡œì¸ ë¶€ëª¨ ê°’ì— ëŒ€í•˜ì—¬ ì¬ê·€. ê·¸ëŒ€ë¡œì¸ ë¶€ëª¨ ê°’ì¼ ê²½ìš° ë°”ë¡œ ë‹¤ìŒ ì¬ê·€ì—ì„œ ì¤‘ë‹¨ë¨ (ì´ë¯¸ ì •ë ¬ëœ í™)
 		}
 	}
 
@@ -29,26 +28,26 @@ public class MaxHeap {
 	}
 
 	public void Insert(MaxHeap mh, int element) {
-		if (mh.size == mh.capacity) { // heap ÀÌ ²Ë Âù »óÅÂ
+		if (mh.size == mh.capacity) { // heap ì´ ê½‰ ì°¬ ìƒíƒœ
 			System.out.println("Insert : Max Heap is full");
-		} else if (mh.size == 0) { // heap ÀÌ ºñ¾îÀÖ´Â »óÅÂ
+		} else if (mh.size == 0) { // heap ì´ ë¹„ì–´ìˆëŠ” ìƒíƒœ
 			mh.size++;
 			mh.elements[mh.size] = element;
-		} else { // heap¿¡ ¿ø¼Ò°¡ ÀÖÀ¸¹Ç·Î ÀÏ´Ü ¸Ç µÚ¿¡ Ãß°¡ÇÏ°í
+		} else { // heapì— ì›ì†Œê°€ ìˆìœ¼ë¯€ë¡œ ì¼ë‹¨ ë§¨ ë’¤ì— ì¶”ê°€í•˜ê³ 
 			mh.size++;
 			mh.elements[mh.size] = element;
-			MakeHeap(mh, mh.size); // Ãß°¡ ÈÄ ÇØ´ç °ª¿¡ ´ëÇØ MakeHeap ÁøÇà
+			MakeHeap(mh, mh.size); // ì¶”ê°€ í›„ í•´ë‹¹ ê°’ì— ëŒ€í•´ MakeHeap ì§„í–‰
 		}
 	}
 
 	public void DeleteMax(MaxHeap mh) {
-		if (mh.size == 0) // ºñ¾îÀÖ´Â heap
+		if (mh.size == 0) // ë¹„ì–´ìˆëŠ” heap
 			System.out.println("Delete : Max Heap is empty");
-		else { // ÀÏ´Ü ¸Ç ¾ÕÀÇ element¸¦ ¸Ç µÚÀÇ element¿Í °°Àº °ªÀ¸·Î ¼³Á¤
+		else { // ì¼ë‹¨ ë§¨ ì•ì˜ elementë¥¼ ë§¨ ë’¤ì˜ elementì™€ ê°™ì€ ê°’ìœ¼ë¡œ ì„¤ì •
 			mh.elements[1] = mh.elements[mh.size];
-			mh.size--; // ±× ÈÄ size¸¦ ÁÙ¿©ÁÖ¸é ÀÚ¿¬½º·¹ ¸¶Áö¸· °ªÀº »ç¶óÁü
+			mh.size--; // ê·¸ í›„ sizeë¥¼ ì¤„ì—¬ì£¼ë©´ ìì—°ìŠ¤ë ˆ ë§ˆì§€ë§‰ ê°’ì€ ì‚¬ë¼ì§
 			for (int i = 1; i <= mh.size; i++)
-				MakeHeap(mh, i); // ·çÆ® °ªºÎÅÍ ¸ğµç °ª¿¡ ´ëÇÏ¿© Á¤·Ä ½ÃÀÛ. À§¿¡¼­ºÎÅÍ Æ®¸®¸¦ Á¤·Ä.
+				MakeHeap(mh, i); // ë£¨íŠ¸ ê°’ë¶€í„° ëª¨ë“  ê°’ì— ëŒ€í•˜ì—¬ ì •ë ¬ ì‹œì‘. ìœ„ì—ì„œë¶€í„° íŠ¸ë¦¬ë¥¼ ì •ë ¬.
 		}
 	}
 
