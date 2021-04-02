@@ -10,31 +10,30 @@ public class Main {
 
 		for (int i = 1; i <= vertex.length; i++) {
 			for (int j = 1; j <= vertex.length; j++) {
-				indegree[i] = indegree[i] + edges[j][i]; // °¢ vertexÀÇ indegree °ªÀº ¿­ÀÇ ÇÕ
+				indegree[i] = indegree[i] + edges[j][i]; // ê° vertexì˜ indegree ê°’ì€ ì—´ì˜ í•©
 			}
 		}
 		return indegree;
 	}
 
 	public static void toposort(String vertex[], int edges[][]) {
-		int indegree[] = calIndegree(vertex, edges); // indegree °è»êÇØ¼­ ¹è¿­·Î °¡Á®¿À±â.
+		int indegree[] = calIndegree(vertex, edges); // indegree ê³„ì‚°í•´ì„œ ë°°ì—´ë¡œ ê°€ì ¸ì˜¤ê¸°.
 		ArrayList<Integer> result = new ArrayList<>();
 		int ver;
 
-		while (result.size() < vertex.length) { // result¿¡ ¸ğµç vertex °¡ µé¾î¿À¸é Áß´Ü
-			ArrayList<Integer> temp = new ArrayList<>(); // ·çÇÁ¸¶´Ù °»½ÅµÇ´Â list, ·çÇÁ¸¦ µ¹ ¶§¸¶´Ù 0ÀÎ °ªÀ» ÀúÀåÇÏ¿© for¿¡¼­ »ç¿ë
+		while (result.size() < vertex.length) { // resultì— ëª¨ë“  vertex ê°€ ë“¤ì–´ì˜¤ë©´ ì¤‘ë‹¨
+			ArrayList<Integer> temp = new ArrayList<>(); // ë£¨í”„ë§ˆë‹¤ ê°±ì‹ ë˜ëŠ” list, ë£¨í”„ë¥¼ ëŒ ë•Œë§ˆë‹¤ 0ì¸ ê°’ì„ ì €ì¥í•˜ì—¬ forì—ì„œ ì‚¬ìš©
 
 			for (ver = 1; ver <= vertex.length; ver++) {
-				if (indegree[ver] == 0) { // indegree°ªÀÌ 0ÀÎ vertex¸¦ result¿Í temp¿¡ ÀúÀåÇÏ°í
+				if (indegree[ver] == 0) { // indegreeê°’ì´ 0ì¸ vertexë¥¼ resultì™€ tempì— ì €ì¥í•˜ê³ 
 					result.add(ver);
 					temp.add(ver);
-					indegree[ver] = -1; // ÇØ´ç vertexÀÇ indegree °ªÀ» -1·Î ¼³Á¤
+					indegree[ver] = -1; // í•´ë‹¹ vertexì˜ indegree ê°’ì„ -1ë¡œ ì„¤ì •
 				}
 			}
-
-			for (int i = 1; i <= vertex.length; i++) { // »èÁ¦ vertex¿Í °ü·ÃµÈ vertexµéÀÇ indegree °ªÀ» ÁÙ¿©ÁÜ
-				for (int j = 0; j < temp.size(); j++) { // temp¸®½ºÆ®¿¡ µé¾î¿Â °ª (Çö ·çÇÁ¿¡¼­ indegree °ªÀÌ 0ÀÌ¾ú´ø vertex)
-					if (edges[temp.get(j)][i] == 1) // vertex¿¡ ¿¬°áµÇ¾î ÀÖ´Â edge ÀÖÀ¸¸é ±× ¸ñÀûÁö edgeÀÇ indegree°ªÀ» -1
+			for (int i = 1; i <= vertex.length; i++) { // ì‚­ì œ vertexì™€ ê´€ë ¨ëœ vertexë“¤ì˜ indegree ê°’ì„ ì¤„ì—¬ì¤Œ
+				for (int j = 0; j < temp.size(); j++) { // tempë¦¬ìŠ¤íŠ¸ì— ë“¤ì–´ì˜¨ ê°’ (í˜„ ë£¨í”„ì—ì„œ indegree ê°’ì´ 0ì´ì—ˆë˜ vertex)
+					if (edges[temp.get(j)][i] == 1) // vertexì— ì—°ê²°ë˜ì–´ ìˆëŠ” edge ìˆìœ¼ë©´ ê·¸ ëª©ì ì§€ edgeì˜ indegreeê°’ì„ -1
 						indegree[i] -= 1;
 				}
 			}
