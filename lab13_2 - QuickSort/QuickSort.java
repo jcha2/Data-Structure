@@ -9,19 +9,19 @@ public class QuickSort {
 		/****** leftmost ******/
 		if (howpivot == 0) {
 			while (lefti < righti) {
-				while (nums[lefti] <= nums[pivoti] && lefti < end) // Ã³À½ºÎÅÍ º¸¸é¼­ ÇÇ¹ş °ªº¸´Ù Å« °ªÀ» Ã£À½
+				while (nums[lefti] <= nums[pivoti] && lefti < end) // ì²˜ìŒë¶€í„° ë³´ë©´ì„œ í”¼ë²— ê°’ë³´ë‹¤ í° ê°’ì„ ì°¾ìŒ
 					lefti++;
-				while (nums[righti] > nums[pivoti] && righti > start) // ³¡ºÎÅÍ º¸¸é¼­ ÇÇ¹ş °ªº¸´Ù ÀÛÀº °ªÀ» Ã£À½
+				while (nums[righti] > nums[pivoti] && righti > start) // ëë¶€í„° ë³´ë©´ì„œ í”¼ë²— ê°’ë³´ë‹¤ ì‘ì€ ê°’ì„ ì°¾ìŒ
 					righti--;
 
 				if (lefti < righti)
 					swap(nums, lefti, righti);
 			}
 
-			// ¿ŞÂÊ¿¡ ÀÛÀº °ªÀÌ ÀÖ°í ¿À¸¥ÂÊ¿¡ Å« °ªÀÌ ÀÖ´Â »óÅÂÀÏ °æ¿ì.
-			// Å©·Î½º µÇ¾î¼­ righti°¡ ÇÇ¹şº¸´Ù ÀÛÀº °ªÀ» °¡¸®Å°´Â »óÅÂ.
+			// ì™¼ìª½ì— ì‘ì€ ê°’ì´ ìˆê³  ì˜¤ë¥¸ìª½ì— í° ê°’ì´ ìˆëŠ” ìƒíƒœì¼ ê²½ìš°.
+			// í¬ë¡œìŠ¤ ë˜ì–´ì„œ rightiê°€ í”¼ë²—ë³´ë‹¤ ì‘ì€ ê°’ì„ ê°€ë¦¬í‚¤ëŠ” ìƒíƒœ.
 
-			swap(nums, righti, pivoti); // ÀÛÀº °ª°ú ÇÇ¹ş ±³È¯
+			swap(nums, righti, pivoti); // ì‘ì€ ê°’ê³¼ í”¼ë²— êµí™˜
 			print(nums, start, end, righti);
 
 			if (start < righti - 1)
@@ -33,16 +33,16 @@ public class QuickSort {
 		/****** rightmost ******/
 		if (howpivot == 1) {
 			while (lefti < righti) {
-				while (nums[lefti] < nums[pivoti] && lefti < end) // Ã³À½ºÎÅÍ º¸¸é¼­ ÇÇ¹ş °ªº¸´Ù Å« °ªÀ» Ã£À½
+				while (nums[lefti] < nums[pivoti] && lefti < end) // ì²˜ìŒë¶€í„° ë³´ë©´ì„œ í”¼ë²— ê°’ë³´ë‹¤ í° ê°’ì„ ì°¾ìŒ
 					lefti++;
-				while (nums[righti] >= nums[pivoti] && righti > start) // ³¡ºÎÅÍ º¸¸é¼­ ÇÇ¹ş °ªº¸´Ù ÀÛÀº °ªÀ» Ã£À½
+				while (nums[righti] >= nums[pivoti] && righti > start) // ëë¶€í„° ë³´ë©´ì„œ í”¼ë²— ê°’ë³´ë‹¤ ì‘ì€ ê°’ì„ ì°¾ìŒ
 					righti--;
 
 				if (lefti < righti)
 					swap(nums, lefti, righti);
 			}
 
-			swap(nums, lefti, pivoti); // Å« °ª°ú ÇÇ¹ş ±³È¯
+			swap(nums, lefti, pivoti); // í° ê°’ê³¼ í”¼ë²— êµí™˜
 			print(nums, start, end, lefti);
 
 			if (start < lefti - 1)
@@ -55,15 +55,15 @@ public class QuickSort {
 		/****** middle ******/
 		if (howpivot == 2) {
 			while (lefti < pivoti && righti > pivoti) {
-				while (nums[lefti] <= nums[pivoti] && lefti < pivoti) // Ã³À½ºÎÅÍ º¸¸é¼­ ÇÇ¹ş °ªº¸´Ù Å« °ªÀ» Ã£À½
+				while (nums[lefti] <= nums[pivoti] && lefti < pivoti) // ì²˜ìŒë¶€í„° ë³´ë©´ì„œ í”¼ë²— ê°’ë³´ë‹¤ í° ê°’ì„ ì°¾ìŒ
 					lefti++;
-				while (nums[righti] >= nums[pivoti] && righti > pivoti) // ³¡ºÎÅÍ º¸¸é¼­ ÇÇ¹ş °ªº¸´Ù ÀÛÀº °ªÀ» Ã£À½
+				while (nums[righti] >= nums[pivoti] && righti > pivoti) // ëë¶€í„° ë³´ë©´ì„œ í”¼ë²— ê°’ë³´ë‹¤ ì‘ì€ ê°’ì„ ì°¾ìŒ
 					righti--;
 
 				if (lefti < righti && lefti != pivoti && righti != pivoti)
 					swap(nums, lefti, righti);
 			}
-			if (lefti == start && righti == end) { // ÀÌ¹Ì Á¤·ÄµÈ ¿ø¼Ò µÎ°³ÀÇ ¹è¿­,.. ¿¹¿Ü
+			if (lefti == start && righti == end) { // ì´ë¯¸ ì •ë ¬ëœ ì›ì†Œ ë‘ê°œì˜ ë°°ì—´,.. ì˜ˆì™¸
 				print(nums, start, end, pivoti);
 
 				if (start < pivoti - 1)
@@ -71,7 +71,7 @@ public class QuickSort {
 				if (pivoti + 1 < end)
 					sort(nums, pivoti + 1, end, howpivot);
 
-			} else if (lefti == pivoti && righti == pivoti) { // ÀÌ¹Ì Á¤·ÄµÈ ¹è¿­
+			} else if (lefti == pivoti && righti == pivoti) { // ì´ë¯¸ ì •ë ¬ëœ ë°°ì—´
 				print(nums, start, end, pivoti);
 
 				if (start < pivoti - 1)
@@ -80,7 +80,7 @@ public class QuickSort {
 					sort(nums, pivoti + 1, end, howpivot);
 
 			} else if (pivoti == righti) {
-				swap(nums, lefti, pivoti); // lefti°¡ ¾ÆÁ÷µµ ¿ŞÂÊ¿¡ : Ã¹ Å« °ª °¡¸®Å°°í ÀÖ´Â °Í
+				swap(nums, lefti, pivoti); // leftiê°€ ì•„ì§ë„ ì™¼ìª½ì— : ì²« í° ê°’ ê°€ë¦¬í‚¤ê³  ìˆëŠ” ê²ƒ
 				print(nums, start, end, lefti);
 
 				if (start < lefti - 1)
@@ -89,7 +89,7 @@ public class QuickSort {
 					sort(nums, lefti + 1, end, howpivot);
 
 			} else if (pivoti == lefti) {
-				swap(nums, righti, pivoti); // righti °¡ ¿À¸¥ÂÊ¿¡ : ¸¶Áö¸· ÀÛÀº °ª °¡ŸÅ°°í ÀÖ´Â °Í
+				swap(nums, righti, pivoti); // righti ê°€ ì˜¤ë¥¸ìª½ì— : ë§ˆì§€ë§‰ ì‘ì€ ê°’ ê°€ÂÂŸí‚¤ê³  ìˆëŠ” ê²ƒ
 				print(nums, start, end, righti);
 
 				if (start < righti - 1)
@@ -131,5 +131,4 @@ public class QuickSort {
 
 		return howpivot;
 	}
-
 }
