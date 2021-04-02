@@ -12,7 +12,7 @@ public class Main {
 		String edge[] = br.readLine().split(" ");
 		int edges[][] = new int[vertex.length + 1][vertex.length + 1];
 
-		for (int i = 0; i < edge.length; i++) { // edges °ª ³Ö¾îÁÖ±â
+		for (int i = 0; i < edge.length; i++) { // edges ê°’ ë„£ì–´ì£¼ê¸°
 			String line[] = edge[i].split("-");
 			edges[Integer.parseInt(line[0])][Integer.parseInt(line[1])] = Integer.parseInt(line[2]);
 		}
@@ -24,7 +24,7 @@ public class Main {
 			System.out.println();
 		}
 
-		while (true) { // N ÀÔ·Â µÉ ‹š±îÁö °è¼Ó ÁøÇà
+		while (true) { // N ì…ë ¥ ë  Â‹Âšê¹Œì§€ ê³„ì† ì§„í–‰
 			System.out.print("start : ");
 			int startv = sc.nextInt();
 			System.out.print("end : ");
@@ -48,20 +48,19 @@ public class Main {
 	}
 
 	public static void Dijkstra(String vertex[], int edges[][], int startv, int endv) {
-		int dist[] = new int[vertex.length + 1]; // vertex´Â 1ºÎÅÍ ½ÃÀÛÇÏ¹Ç·Î
+		int dist[] = new int[vertex.length + 1]; // vertexëŠ” 1ë¶€í„° ì‹œì‘í•˜ë¯€ë¡œ
 		boolean visit[] = new boolean[vertex.length + 1];
 		int resultver[] = new int[vertex.length];
 		int resultindex = 0;
 		for (int i = 1; i <= vertex.length; i++) {
-			dist[i] = edges[startv][i]; // dist ÃÊ±âÈ­
+			dist[i] = edges[startv][i]; // dist ì´ˆê¸°í™”
 			visit[i] = false;
 		}
 		visit[startv] = true;
 		resultver[resultindex++] = startv;
 		print(dist, visit);
-
+		
 		int nowver = startv;
-
 		while (nowver != endv) {
 			int next = 0;
 			int nextver = 0;
@@ -69,7 +68,7 @@ public class Main {
 			for (int j = 1; j <= vertex.length; j++) {
 				if (visit[j] == false) {
 					if (next == 0 && edges[nowver][j] != 0) {
-						next = edges[nowver][j]; // next¿¡ Ã¹ °ª ÀúÀå
+						next = edges[nowver][j]; // nextì— ì²« ê°’ ì €ì¥
 						nextver = j;
 					} else {
 						if (edges[nowver][j] != 0 && next > edges[nowver][j]) {
@@ -95,7 +94,7 @@ public class Main {
 		}
 	}
 
-	public static int[] calDist(int edges[][], boolean visit[], int dist[], int ver) { // Áö±İ ¹æ¹®ÇÏ´Â Á¡
+	public static int[] calDist(int edges[][], boolean visit[], int dist[], int ver) { // ì§€ê¸ˆ ë°©ë¬¸í•˜ëŠ” ì 
 
 		for (int i = 1; i < visit.length; i++) {
 			if (edges[ver][i] != 0) {
