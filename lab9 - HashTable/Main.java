@@ -4,15 +4,14 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-
 		BufferedReader br = new BufferedReader(new FileReader("hash_input.txt"));
 		String line = "";
 
 		int size = Integer.parseInt(br.readLine().trim());
 		double cal = Double.parseDouble(br.readLine().trim());
-		HashTbl ht = new HashTbl(size, cal); // »õ·Î¿î ÇØ½Ã Å×ÀÌºí »ı¼º, »çÀÌÁî¿Í ÇØ½Ì ÇÔ¼ö ¸¸µé±â À§ÇÑ float °ª ¼³Á¤
+		HashTbl ht = new HashTbl(size, cal); // ìƒˆë¡œìš´ í•´ì‹œ í…Œì´ë¸” ìƒì„±, ì‚¬ì´ì¦ˆì™€ í•´ì‹± í•¨ìˆ˜ ë§Œë“¤ê¸° ìœ„í•œ float ê°’ ì„¤ì •
 		System.out.println("Hash table size : " + size);
-		System.out.println("A : " + String.format("%.6f", cal)); //¼Ò¼öÁ¡ 6¹øÂ° ÀÚ¸®±îÁö Ç¥Çö
+		System.out.println("A : " + String.format("%.6f", cal)); //ì†Œìˆ˜ì  6ë²ˆì§¸ ìë¦¬ê¹Œì§€ í‘œí˜„
 
 		while ((line = br.readLine()) != null) {
 			String[] lines = line.split(" ");
