@@ -23,7 +23,6 @@ public class Main {
 		ms.iterativeMergeSort(nums1);
 		System.out.println("\nrecursive : ");
 		ms.recursiveMergeSort(nums2, 0, nums2.length - 1);
-
 		br.close();
 
 	}
